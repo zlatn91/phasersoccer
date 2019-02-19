@@ -1,2 +1,2 @@
 # Soocer
-Kim Eun Soo + Soccer = Soocer
+Kim Eun *Soo* + *Soccer* = ***Soocer!!***

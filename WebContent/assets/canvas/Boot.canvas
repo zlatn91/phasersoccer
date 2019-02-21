@@ -1,0 +1,62 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Boot",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": false,
+    "isPreloader": true,
+    "preloadSpriteId": "",
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "38e9aa8c-00ac-4dee-b678-6a6f0fff223c",
+    "info": {
+      "editorName": "Boot",
+      "setAll": [],
+      "children": [{
+        "type": "image",
+        "id": "4ce9c75a-4a3b-4beb-92a5-30649c15e635",
+        "asset": "0",
+        "info": {
+          "editorName": "ball",
+          "x": -86,
+          "y": -258
+        }
+      }]
+    }
+  },
+  "type": "STATE",
+  "asset-table": {"0": {
+    "file": "WebContent/assets/pack.json",
+    "section": "img",
+    "asset": "ball2"
+  }},
+  "prefab-table": {}
+}

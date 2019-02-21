@@ -47,10 +47,26 @@
       "key": "goalPost2",
       "url": "assets/img/goalPost2.png",
       "overwrite": true
+    },
+    {
+      "type": "script",
+      "key": "boot",
+      "url": "assets/canvas/Boot.js"
+    },
+    {
+      "type": "script",
+      "key": "Menu",
+      "url": "assets/canvas/Menu.js"
+    },
+    {
+      "type": "image",
+      "key": "menu",
+      "url": "assets/img/menu.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1550711424197",
+    "generated": "1550714685893",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

@@ -1,9 +1,9 @@
 {
   "canvas-version": 2,
   "settings": {
-    "className": "Boot",
-    "sceneWidth": 640,
-    "sceneHeight": 360,
+    "className": "Menu",
+    "sceneWidth": 960,
+    "sceneHeight": 540,
     "generateOnSave": true,
     "enableStepping": false,
     "lang": "JAVA_SCRIPT",
@@ -33,20 +33,17 @@
   },
   "world": {
     "type": "group",
-    "id": "8584d348-1589-43b5-96e5-a5f8fc2381d5",
+    "id": "4a29000b-2294-439f-a1bd-74545c323112",
     "info": {
-      "editorName": "Boot",
+      "editorName": "Menu",
       "setAll": [],
       "children": [{
         "type": "image",
-        "id": "d75f78bd-adec-43d8-82be-2b6626a01f10",
+        "id": "dae421ec-33b0-48c2-9af7-d49a7060f822",
         "asset": "0",
         "info": {
-          "editorName": "ball",
-          "x": 99,
-          "y": -53,
-          "scale.x": 0.5,
-          "scale.y": 0.5
+          "editorName": "menu",
+          "y": -2
         }
       }]
     }
@@ -55,7 +52,7 @@
   "asset-table": {"0": {
     "file": "WebContent/assets/pack.json",
     "section": "img",
-    "asset": "ball2"
+    "asset": "menu"
   }},
   "prefab-table": {}
 }

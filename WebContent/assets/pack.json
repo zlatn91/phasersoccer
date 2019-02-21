@@ -68,10 +68,27 @@
       "type": "script",
       "key": "Result",
       "url": "assets/canvas/Result.js"
+    },
+    {
+      "type": "script",
+      "key": "Rules",
+      "url": "assets/canvas/Rules.js"
+    },
+    {
+      "type": "image",
+      "key": "startButton",
+      "url": "assets/img/startButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "goal",
+      "url": "assets/img/goal.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1550715634736",
+    "generated": "1550737218603",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

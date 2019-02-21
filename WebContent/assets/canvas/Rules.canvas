@@ -1,0 +1,47 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Rules",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "1ed13141-d2f8-4640-8f5b-d9bcb3a4a91f",
+    "info": {
+      "editorName": "Rules",
+      "setAll": [],
+      "children": []
+    }
+  },
+  "type": "STATE",
+  "asset-table": {},
+  "prefab-table": {}
+}

@@ -32,9 +32,12 @@ Menu.prototype.preload = function () {
 
 Menu.prototype.create = function () {
 	this.add.sprite(0.0, -2.0, 'menu');
-	this.game.input.onDown.add(startGame, this);
 	
-
+	var _startButton = this.add.button(334.0, 25.0, 'startButton', startGame, this, null, null, null, null);
+	_startButton.scale.setTo(0.5, 0.5);
+	
+	
+	
 };
 
 /* --- end generated code --- */
@@ -42,4 +45,7 @@ Menu.prototype.create = function () {
 // -- user code here --
 function startGame(){
 	this.game.state.start("Level");
+}
+function showRules(){
+	this.game.state.start("Rules");
 }

@@ -29,8 +29,12 @@ Result.prototype.preload = function () {
 };
 
 Result.prototype.create = function () {
-	
+	this.game.input.onDown.add(this, restart);
 };
 
 /* --- end generated code --- */
+
 // -- user code here --
+function restart(){
+	this.game.state.start("Level");
+}

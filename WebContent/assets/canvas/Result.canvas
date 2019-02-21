@@ -1,0 +1,45 @@
+{
+  "canvas-version": 2,
+  "settings": {
+    "className": "Result",
+    "sceneWidth": 640,
+    "sceneHeight": 360,
+    "generateOnSave": true,
+    "enableStepping": false,
+    "lang": "JAVA_SCRIPT",
+    "baseClass": "Phaser.State",
+    "backgroundColor": [
+      180,
+      180,
+      180
+    ],
+    "gridColor": [
+      200,
+      200,
+      200
+    ],
+    "showGrid": true
+  },
+  "stateSettings": {
+    "stageBackgroundColor": [
+      0,
+      0,
+      0
+    ],
+    "autoLoad": true,
+    "preloadSprite_direction": 0,
+    "load.pack": []
+  },
+  "world": {
+    "type": "group",
+    "id": "0a6c6fc2-1025-4535-b25b-89442f88a380",
+    "info": {
+      "editorName": "Result",
+      "setAll": [],
+      "children": []
+    }
+  },
+  "type": "STATE",
+  "asset-table": {},
+  "prefab-table": {}
+}

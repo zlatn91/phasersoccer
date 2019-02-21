@@ -26,16 +26,15 @@
   "stateSettings": {
     "scaleMode": "SHOW_ALL",
     "pageAlignHorizontally": true,
-    "pageAlignVertically": true,
     "stageBackgroundColor": [
       255,
       255,
       255
     ],
-    "autoLoad": false,
-    "isPreloader": true,
+    "rendererRoundPixels": true,
+    "autoLoad": true,
     "preloadSpriteId": "",
-    "preloadSprite_direction": 0,
+    "preloadSprite_direction": 1,
     "load.pack": []
   },
   "world": {

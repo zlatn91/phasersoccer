@@ -25,7 +25,7 @@ Level.prototype.init = function () {
 
 Level.prototype.preload = function () {
 	
-	this.load.pack('img', 'assets/pack.json');
+//	this.load.pack('img', 'assets/pack.json');
 	
 };
 
@@ -95,15 +95,15 @@ Level.prototype.create = function () {
 	_ball.body.maxAngular = 800.0;
 	
 	_awayTeam.setAll("body.collideWorldBounds", true);
-	_awayTeam.setAll("body.bounce.x", 0.9);
-	_awayTeam.setAll("body.bounce.y", 0.9);
+	_awayTeam.setAll("body.bounce.x", 0.6);
+	_awayTeam.setAll("body.bounce.y", 0.6);
 	_awayTeam.setAll("body.drag.x", 100);
 	_awayTeam.setAll("body.drag.y", 100);
 	_awayTeam.setAll("body.maxVelocity.x", 600);
 	_awayTeam.setAll("body.maxVelocity.y", 600);
 	_homeTeam.setAll("body.collideWorldBounds", true);
-	_homeTeam.setAll("body.bounce.x", 0.9);
-	_homeTeam.setAll("body.bounce.y", 0.9);
+	_homeTeam.setAll("body.bounce.x", 0.6);
+	_homeTeam.setAll("body.bounce.y", 0.6);
 	_homeTeam.setAll("body.drag.x", 100);
 	_homeTeam.setAll("body.drag.y", 100);
 	_homeTeam.setAll("body.maxVelocity.x", 600);
@@ -181,15 +181,18 @@ var kickerSpeed;
 var spin;
 
 Level.prototype.update = function() {
-//	kickerSpeed = parseInt(this.f)
 	ballSpeed = parseInt(this.fBall.body.speed);
 	
-	color1 = [ 0, 255, 0 ];
-	color2 = [ 255, 0, 0 ];
+	// 화살표의 색범위를 정해줌 
+	let color1 = [ 0, 255, 0 ];
+	let color2 = [ 255, 0, 0 ];
+	// 공의 정 가운데를 체크 
 	bX = this.fBall.body.center.x;
 	bY = this.fBall.body.center.y;
+	// 마우스의 x,y를 판단 
 	mouseX = this.game.input.activePointer.x;
 	mouseY = this.game.input.activePointer.y;
+	
 	if (arrow !== undefined) {
 		arrow.rotation = this.game.physics.arcade.angleToPointer(arrow);
 		length = Math.pow((mouseX - arrow.x), 2)
@@ -224,7 +227,7 @@ Level.prototype.update = function() {
 	// Home, Away 그룹은 서로 충돌 
 	this.game.physics.arcade.collide(this.fHomeTeam, this.fAwayTeam);
 	
-	// 공의 스피드가 떨어지면 공의 가속도를 점차 감소시
+// 공의 스피드가 떨어지면 공의 가속도를 점차 감소시킴 
 	
 //	if (speed !== 0) {
 //		if (speed <= 200 && speed > 100) {
@@ -278,6 +281,10 @@ Level.prototype.update = function() {
 			console.log("오른쪽하단구석");
 			this.fBall.body.velocity.set(ran(-300, -200), ran(-400, -200));
 		}
+	}
+	// 어느 팀이든 2득점시 결과 캔버스를 보여줌 
+	if(homeTeamScore == 2 || awayTeamScore == 2){
+		this.game.state.start("Result");
 	}
 };
 
@@ -387,10 +394,13 @@ function setY(player) {
 	centerY = player.body.center.y;
 	return centerY;
 }
+
+// 득점시 게임 재시작, cleaChache 를 fasle로 해야됨 
 function restart() {
 	timer.add(5000, turnTimer, this);
-	this.game.state.start('Level', true, true);
+	this.game.state.restart('Level', false, this);
 }
+// 플레이어 클릭시 키커의 x와 y축의 센터부터 그려지게
 function setArrow(kicker) {
 	this.kicker = kicker;
 	kX = kicker.body.center.x;
@@ -407,6 +417,7 @@ function set(kicker) {
 }
 var turn;
 
+// 키커가 어디 그룹에 속해있는지 판단하기 위해 만든 메서
 function include (array, obj){
 	for(var i=0; i<array.length; i++){
 		if(array[i] == obj) return true;
@@ -429,6 +440,7 @@ function shoot(kicker, Level) {
 	arrow = undefined;
 }
 var j;
+
 function check(Level){
 	let flag = false;
 	j = 0;
@@ -476,10 +488,12 @@ function turnTimer() {
 		turn+=1;
 	}
 }
-
+// console.log를 간편하게 쓸 수 있게 작성한 메서드 
 function test(article) {
 	console.log("#### test: " + article);
 }
+
+// 최소 최대값을 받아 그 범위의 랜덤수를 뽑아주는 역할 
 function ran(min, max) {
 	let ran2 = Phaser.Math.between(min, max);
 	return ran2;

@@ -4,6 +4,7 @@ window.onload = function() {
 	game.state.add("Boot", Boot);
 	game.state.add("Menu", Menu);
 	game.state.add("Level", Level);
+	game.state.add("Result", Result);
 	
 	game.state.start("Boot");
 };

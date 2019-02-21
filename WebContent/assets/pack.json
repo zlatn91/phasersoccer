@@ -63,10 +63,15 @@
       "key": "menu",
       "url": "assets/img/menu.png",
       "overwrite": false
+    },
+    {
+      "type": "script",
+      "key": "Result",
+      "url": "assets/canvas/Result.js"
     }
   ],
   "meta": {
-    "generated": "1550714685893",
+    "generated": "1550715634736",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

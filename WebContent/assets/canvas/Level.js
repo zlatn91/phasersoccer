@@ -192,17 +192,23 @@ Level.prototype.update = function() {
 	// 마우스의 x,y를 판단 
 	mouseX = this.game.input.activePointer.x;
 	mouseY = this.game.input.activePointer.y;
-	
+	/*  
+	 * 피타고라스의 정리를 활용하여 마우스를 처음 클릭한 좌표와 끌고온 좌표의 길이를 구함
+	 * 마우스를 끌고온 x거리는 mouseX-arrow.X 의 제곱과 y거리 mouseY-arrow.y의 제곱을 Math.pow() 함수로 구하고 더해줌  
+	 * 후에 Math.sqrt() 로 루트를 씌워 피타고라스 식을 완료 
+	 */
 	if (arrow !== undefined) {
 		arrow.rotation = this.game.physics.arcade.angleToPointer(arrow);
 		length = Math.pow((mouseX - arrow.x), 2)
 				+ Math.pow((mouseY - arrow.y), 2);
 		length = Math.sqrt(length);
 		length = parseInt(length * 1.5);
+		// legth를 정수로 만들어서 거리에 비례해 화살표의 크기를 변하게하고 color1,2 배열의 인덱스에 거리를 더해주면 색상이 변경
 		if (length > 0 && length < 255) {
 			arrow.scale.set(0 + length / 130, 0 + length / 130);
-			var color = Phaser.Color.RGBtoString(color1[0] += length, color1[1] += -length, color1[2], '', '');
+			let color = Phaser.Color.RGBtoString(color1[0] += length, color1[1] += -length, color1[2], '', '');
 			arrow.tint = color;
+		// 벌어진 거리가 크면 화면 흔들리는 효과를 넣어줌 
 		} else if (length > 300) {
 			this.game.camera.shake(0.003, 100);
 		}

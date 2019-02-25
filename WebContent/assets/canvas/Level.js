@@ -19,7 +19,8 @@ Level.prototype.constructor = Level;
 
 Level.prototype.init = function () {
 	this.stage.backgroundColor = '#ffffff';
-	
+	this.scale.pageAlignHorizontally = true;
+	this.scale.pageAlignVertically = true;
 };
 
 Level.prototype.preload = function () {
@@ -81,6 +82,7 @@ Level.prototype.create = function () {
 	
 	var _ball = this.add.sprite(480.0, 274.0, 'ball');
 	this.game.physics.arcade.enable(_ball);
+//	_ball.body.setCircle();
 	_ball.anchor.setTo(0.5, 0.5);
 	_ball.body.collideWorldBounds = true;
 	_ball.body.bounce.x = 1;
@@ -337,21 +339,21 @@ function banana(fBall, kicker) {
 			fBall.body.velocity.y += 500;
 			fBall.body.acceleration.y += 50;
 		}
-//		if (kX > bX) {
-//			test("감아차");
-//			kicker.body.angularVelocity = -1000;
-//			kicker.body.angularDrag = 200;
-//			fBall.body.angularVelocity = 1000;
-//				fBall.body.velocity.x += -10;
-//				fBall.body.acceleration.x += -50;
-//		}
-//		if (bX > kX) {
-//			kicker.body.angularVelocity = 1000;
-//			kicker.body.angularDrag = 200;
-//			fBall.body.angularVelocity = -1000;
-//				fBall.body.velocity.x += 10;
-//				fBall.body.acceleration.x += 10;
-//		}
+		if (kX > bX) {
+			test("감아차");
+			kicker.body.angularVelocity = -1000;
+			kicker.body.angularDrag = 200;
+			fBall.body.angularVelocity = 1000;
+				fBall.body.velocity.x += -10;
+				fBall.body.acceleration.x += -50;
+		}
+		if (bX > kX) {
+			kicker.body.angularVelocity = 1000;
+			kicker.body.angularDrag = 200;
+			fBall.body.angularVelocity = -1000;
+				fBall.body.velocity.x += 10;
+				fBall.body.acceleration.x += 10;
+		}
 	}
 	if (kicker.body.speed > 200 && kicker.body.speed < 400) {
 		if (kY > bY) {
@@ -368,20 +370,20 @@ function banana(fBall, kicker) {
 			fBall.body.angularDrag = 50;
 				fBall.body.acceleration.y += 2;
 		}
-//		if (kX > bX) {
-//			kicker.body.angularVelocity = -200;
-//			kicker.body.angularDrag = 50;
-//			fBall.body.angularVelocity += 200;
-//			fBall.body.angularDrag = 50;
-//				fBall.body.acceleration.x -= 2;
-//		}
-//		if (kX > bX) {
-//			kicker.body.angularVelocity += 200;
-//			kicker.body.angularDrag = 50;
-//			fBall.body.angularVelocity -= 200;
-//			fBall.body.angularDrag = 50;
-//				fBall.body.acceleration.x -= 2;
-//		}
+		if (kX > bX) {
+			kicker.body.angularVelocity = -200;
+			kicker.body.angularDrag = 50;
+			fBall.body.angularVelocity += 200;
+			fBall.body.angularDrag = 50;
+				fBall.body.acceleration.x -= 2;
+		}
+		if (kX > bX) {
+			kicker.body.angularVelocity += 200;
+			kicker.body.angularDrag = 50;
+			fBall.body.angularVelocity -= 200;
+			fBall.body.angularDrag = 50;
+				fBall.body.acceleration.x -= 2;
+		}
 	}
 }
 var bounce = 1;

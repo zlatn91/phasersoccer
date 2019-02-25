@@ -85,10 +85,40 @@
       "key": "goal",
       "url": "assets/img/goal.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "trophies",
+      "url": "assets/img/trophies.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "logo",
+      "url": "assets/img/logo.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "neonLogo",
+      "url": "assets/img/neonLogo.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "retry",
+      "url": "assets/img/retry.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "rules",
+      "url": "assets/img/rules.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1550737218603",
+    "generated": "1550976016905",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

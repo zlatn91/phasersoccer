@@ -9,9 +9,9 @@
     "lang": "JAVA_SCRIPT",
     "baseClass": "Phaser.State",
     "backgroundColor": [
-      180,
-      180,
-      180
+      169,
+      169,
+      169
     ],
     "gridColor": [
       200,
@@ -27,6 +27,7 @@
       0
     ],
     "autoLoad": true,
+    "preloadSpriteId": "",
     "preloadSprite_direction": 0,
     "load.pack": []
   },
@@ -36,10 +37,63 @@
     "info": {
       "editorName": "Result",
       "setAll": [],
-      "children": []
+      "children": [
+        {
+          "type": "image",
+          "id": "357e4a3d-212a-4d1e-9b64-91d6604c645a",
+          "asset": "0",
+          "info": {
+            "editorName": "trophies",
+            "x": 204,
+            "y": 11,
+            "scale.x": 0.5,
+            "scale.y": 0.5
+          }
+        },
+        {
+          "type": "button",
+          "id": "a1655d63-1d2a-432b-b852-18821420e746",
+          "asset": "1",
+          "info": {
+            "editorName": "retry",
+            "x": 269,
+            "y": 274,
+            "scale.x": 0.4,
+            "scale.y": 0.4
+          }
+        },
+        {
+          "type": "image",
+          "id": "5a1d3158-35b8-4f8c-8f46-b01a3552915c",
+          "asset": "2",
+          "info": {
+            "editorName": "neonLogo",
+            "x": 224,
+            "y": 273,
+            "scale.x": 0.1,
+            "scale.y": 0.1
+          }
+        }
+      ]
     }
   },
   "type": "STATE",
-  "asset-table": {},
+  "asset-table": {
+    "0": {
+      "file": "WebContent/assets/pack.json",
+      "section": "img",
+      "asset": "trophies"
+    },
+    "1": {
+      "file": "WebContent/assets/pack.json",
+      "section": "img",
+      "asset": "retry"
+    },
+    "2": {
+      "file": "WebContent/assets/pack.json",
+      "section": "img",
+      "asset": "neonLogo"
+    }
+  },
   "prefab-table": {}
 }

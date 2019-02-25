@@ -26,10 +26,22 @@ Result.prototype.init = function () {
 
 Result.prototype.preload = function () {
 	
+	this.load.pack('img', 'assets/pack.json');
+
 };
 
 Result.prototype.create = function () {
-	this.game.input.onDown.add(this, restart);
+	var _trophies = this.add.sprite(204.0, 11.0, 'trophies');
+	_trophies.scale.setTo(0.5, 0.5);
+
+	var _retry = this.add.button(269.0, 274.0, 'retry', null, this, null, null, null, null);
+	_retry.scale.setTo(0.4, 0.4);
+
+	var _neonLogo = this.add.sprite(224.0, 273.0, 'neonLogo');
+	_neonLogo.scale.setTo(0.1, 0.1);
+
+
+
 };
 
 /* --- end generated code --- */

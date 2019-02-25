@@ -22,6 +22,9 @@ Menu.prototype.constructor = Menu;
 
 Menu.prototype.init = function () {
 	
+	this.scale.pageAlignHorizontally = true;
+	this.scale.pageAlignVertically = true;
+
 };
 
 Menu.prototype.preload = function () {
@@ -31,11 +34,15 @@ Menu.prototype.preload = function () {
 };
 
 Menu.prototype.create = function () {
-	this.add.sprite(0.0, -2.0, 'menu');
+	this.add.sprite(1.0, -1.0, 'logo');
 	
-	var _startButton = this.add.button(334.0, 25.0, 'startButton', startGame, this, null, null, null, null);
-	_startButton.scale.setTo(0.5, 0.5);
-	
+	var _startButton = this.add.button(402.0, 361.0, 'startButton', null, this, null, null, null, null);
+	_startButton.scale.setTo(0.3, 0.3);
+	_startButton.onInputDown.add(startGame, this);
+	var _rules = this.add.button(448.0, 412.0, 'rules', null, this, null, null, null, null);
+	_rules.scale.setTo(0.2, 0.2);
+	_rules.onInputDown.add(showRules, this);
+
 	
 	
 };

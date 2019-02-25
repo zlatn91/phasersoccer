@@ -22,18 +22,17 @@ Boot.prototype.constructor = Boot;
 
 Boot.prototype.init = function () {
 	
+	this.scale.pageAlignHorizontally = true;
+	this.scale.pageAlignVertically = true;
+
 };
 
 Boot.prototype.preload = function () {
-	this.load.pack('img', 'assets/pack.json');
+
 };
 
 Boot.prototype.create = function () {
-	var _ball = this.add.sprite(99.0, -53.0, 'ball2');
-	_ball.scale.setTo(0.5, 0.5);
-	
 	this.game.state.start("Menu");
-	
 };
 
 /* --- end generated code --- */

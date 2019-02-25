@@ -21,6 +21,8 @@
     "showGrid": true
   },
   "stateSettings": {
+    "pageAlignHorizontally": true,
+    "pageAlignVertically": true,
     "stageBackgroundColor": [
       0,
       0,
@@ -37,25 +39,10 @@
     "info": {
       "editorName": "Boot",
       "setAll": [],
-      "children": [{
-        "type": "image",
-        "id": "d75f78bd-adec-43d8-82be-2b6626a01f10",
-        "asset": "0",
-        "info": {
-          "editorName": "ball",
-          "x": 99,
-          "y": -53,
-          "scale.x": 0.5,
-          "scale.y": 0.5
-        }
-      }]
+      "children": []
     }
   },
   "type": "STATE",
-  "asset-table": {"0": {
-    "file": "WebContent/assets/pack.json",
-    "section": "img",
-    "asset": "ball2"
-  }},
+  "asset-table": {},
   "prefab-table": {}
 }

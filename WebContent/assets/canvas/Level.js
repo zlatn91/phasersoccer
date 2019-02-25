@@ -29,6 +29,7 @@ Level.prototype.preload = function () {
 	
 };
 Level.prototype.create = function () {
+	bgm1.stop();
 	startWhistle.play();
 	var _field = this.add.sprite(480.0, 270.0, 'field');
 	_field.anchor.setTo(0.5, 0.5);
@@ -86,28 +87,28 @@ Level.prototype.create = function () {
 	_ball.anchor.setTo(0.5, 0.5);
 	_ball.body.collideWorldBounds = true;
 	_ball.body.bounce.x = 1;
-	_ball.body.bounce.y = 1;
+	_ball.body.bounce.y = 0.7;
 	_ball.body.maxVelocity.x = 900.0;
 	_ball.body.maxVelocity.y = 900.0;
-	_ball.body.drag.x = 100.0;
-	_ball.body.drag.y = 100.0;
+	_ball.body.drag.x = 300.0;
+	_ball.body.drag.y = 300.0;
 	_ball.body.friction.y = 1.0;
 	_ball.body.maxAngular = 1000.0;
 	
 	_awayTeam.setAll("body.collideWorldBounds", true);
-	_awayTeam.setAll("body.bounce.x", 1);
-	_awayTeam.setAll("body.bounce.y", 1);
-	_awayTeam.setAll("body.drag.x", 250);
-	_awayTeam.setAll("body.drag.y", 250);
-	_awayTeam.setAll("body.maxVelocity.x", 600);
-	_awayTeam.setAll("body.maxVelocity.y", 600);
+	_awayTeam.setAll("body.bounce.x", 0.9);
+	_awayTeam.setAll("body.bounce.y", 0.6);
+	_awayTeam.setAll("body.drag.x", 300);
+	_awayTeam.setAll("body.drag.y", 300);
+	_awayTeam.setAll("body.maxVelocity.x", 800);
+	_awayTeam.setAll("body.maxVelocity.y", 800);
 	_homeTeam.setAll("body.collideWorldBounds", true);
-	_homeTeam.setAll("body.bounce.x", 1);
-	_homeTeam.setAll("body.bounce.y", 1);
-	_homeTeam.setAll("body.drag.x", 250);
-	_homeTeam.setAll("body.drag.y", 250);
-	_homeTeam.setAll("body.maxVelocity.x", 600);
-	_homeTeam.setAll("body.maxVelocity.y", 600);
+	_homeTeam.setAll("body.bounce.x", 0.9);
+	_homeTeam.setAll("body.bounce.y", 0.6);
+	_homeTeam.setAll("body.drag.x", 300);
+	_homeTeam.setAll("body.drag.y", 300);
+	_homeTeam.setAll("body.maxVelocity.x", 800);
+	_homeTeam.setAll("body.maxVelocity.y", 800);
 	
 	
 	// fields
@@ -128,14 +129,16 @@ Level.prototype.create = function () {
 	this.fGoalPost = _goalPost;
 	this.fGoalPost1 = _goalPost1;
 	this.fBall = _ball;
-//	this.fBall.body.onWorldBounds = new Phaser.Signal();
-//	this.fBall.body.onWorldBounds.add(setBounce, this);
+	this.fBall.body.onWorldBounds = new Phaser.Signal();
+	this.fBall.body.onWorldBounds.add(setBounce, this);
 //	this.fBall.body.onCollide = new Phaser.Signal();
 
 	graphics2 = this.game.add.graphics(0, 0);
 	graphics2.lineStyle(4, 0xffd900, 1);
 	graphics3 = this.game.add.graphics(0, 0);
 	graphics3.lineStyle(4, 0xA6EC8, 1);
+	
+//	this.game.input.mouse.mouseOutCallback = function() {	console.log("Mouse left game canvas");
 	
 	// 타이머 
 	timer = this.game.time.create(true);
@@ -175,6 +178,7 @@ let kicker;
 let ballSpeed;
 let kickerSpeed;
 let spin;
+
 
 Level.prototype.update = function() {
 	ballSpeed = parseInt(this.fBall.body.speed);
@@ -282,10 +286,7 @@ Level.prototype.update = function() {
 			this.fBall.body.velocity.set(ran(-300, -200), ran(-400, -200));
 		}
 	}
-	// 어느 팀이든 2득점시 결과 캔버스를 보여줌 
-	if(homeTeamScore == 2 || awayTeamScore == 2){
-		timer.add(5000, showResult, this);
-	}
+
 };
 function showResult(){
 	this.game.state.start("Result");
@@ -302,11 +303,16 @@ function score() {
 		scoreTeam.scale.set(0.5, 0.5);
 		homeTeamScore += 1;
 	} else {
-		scoreTeam = this.add.sprite(.0, 100.0, 'goal');
+		scoreTeam = this.add.sprite(400, 100.0, 'goal');
 		scoreTeam.scale.set(0.5, 0.5);
 		awayTeamScore += 1;
 	}
-	timer.add(5000, restart, this);
+	timer.add(8000, restart, this);
+	// 어느 팀이든 2득점시 결과 캔버스를 보여줌 
+	if(homeTeamScore == 2 || awayTeamScore == 2){
+		endWhistle.play("", 0, 0.8, false, false);
+		timer.add(7000, showResult, this);
+	}
 }
 
 // 타이머, 점수를 화면에 표시함 
@@ -320,44 +326,48 @@ Level.prototype.render = function() {
 // 플레이어와 공이 충돌하면 충돌 접점의 x,y를 이용해 감아차는 정도를 판단
 function banana(fBall, kicker) {
 	kick.play();
-//	this.fBall = fBall;
-//	this.kicker = kicker;
 	fBall.body.acceleration.x = 0;
 	fBall.body.acceleration.y = 0;
-	fBall.body.maxVelocity.x = 900.0;
-	fBall.body.maxVelocity.y = 900.0;
 	if (kicker.body.speed > 450) {
+		console.log("ky: " + kY + "  by: " + bY);
 		if (kY > bY) {
 			kicker.body.angularVelocity += 1000;
 			kicker.body.angularDrag = 200;
 			fBall.body.angularVelocity -= 1000;
-			fBall.body.angularDrag = 200;
+			fBall.body.angularDrag = 300;	
 			
-			fBall.body.velocity.y += -500;
-			fBall.body.acceleration.y += -50;
-		}
+			fBall.body.acceleration.y -= 300;
+			
+			fBall.body.velocity.y -= 50;
+			}
 		if (bY > kY) {
 			kicker.body.angularVelocity -= 1000;
 			kicker.body.angularDrag = 200;
 			fBall.body.angularVelocity += 1000;
 			fBall.body.angularDrag = 200;
-			fBall.body.velocity.y += 500;
-			fBall.body.acceleration.y += 50;
+			
+			fBall.body.acceleration.y += 300;
+			
+			fBall.body.velocity.y += 50;
 		}
 		if (kX > bX) {
-			test("감아차");
 			kicker.body.angularVelocity = -1000;
 			kicker.body.angularDrag = 200;
 			fBall.body.angularVelocity = 1000;
-				fBall.body.velocity.x += -10;
-				fBall.body.acceleration.x += -50;
+			
+			fBall.body.velocity.x -= 300;
+			
+			fBall.body.acceleration.x += -50;
 		}
 		if (bX > kX) {
 			kicker.body.angularVelocity = 1000;
 			kicker.body.angularDrag = 200;
 			fBall.body.angularVelocity = -1000;
-				fBall.body.velocity.x += 10;
-				fBall.body.acceleration.x += 10;
+			
+			fBall.body.acceleration.x += 300;
+			
+			fBall.body.velocity.x += 50;
+			
 		}
 	}
 	if (kicker.body.speed > 200 && kicker.body.speed < 400) {
@@ -366,39 +376,39 @@ function banana(fBall, kicker) {
 			kicker.body.angularDrag = 50;
 			fBall.body.angularVelocity = -200;
 			fBall.body.angularDrag = 50;
-			fBall.body.acceleration.y -= 2;
+			fBall.body.acceleration.y -= 150;
 		}
 		if (bY > kY) {
 			kicker.body.angularVelocity = -200;
 			kicker.body.angularDrag = 50;
 			fBall.body.angularVelocity = 200;
 			fBall.body.angularDrag = 50;
-				fBall.body.acceleration.y += 2;
+			fBall.body.acceleration.y += 150;
 		}
 		if (kX > bX) {
 			kicker.body.angularVelocity = -200;
 			kicker.body.angularDrag = 50;
 			fBall.body.angularVelocity += 200;
 			fBall.body.angularDrag = 50;
-				fBall.body.acceleration.x -= 2;
+				fBall.body.acceleration.x -= 150;
 		}
 		if (kX > bX) {
 			kicker.body.angularVelocity += 200;
 			kicker.body.angularDrag = 50;
 			fBall.body.angularVelocity -= 200;
 			fBall.body.angularDrag = 50;
-				fBall.body.acceleration.x -= 2;
+				fBall.body.acceleration.x -= 150;
 		}
 	}
 }
-//var bounce = 1;
-//function setBounce(fBall) {
-//	if (bounce <= 1) {
-//		test("여기");
-//		bounce -= 0.4;
-//		fBall.body.bounce.set(bounce, bounce);
-//	}
-//}
+
+
+var bounce = 1;
+
+function setBounce(fBall) {
+	kick.play();
+}
+	
 function setX(player) {
 	centerX = player.body.center.x;
 	return centerX;
@@ -462,7 +472,7 @@ function check(Level){
 		for(var i=0; i<5; i++){
 			if(Level.fHomeTeam.children[i].body.velocity.x === 0 && Level.fAwayTeam.children[i].body.velocity.x === 0 ){
 				if(i===4){
-//					timer.resume();
+					timer.start();
 					flag = true;
 				}
 				

@@ -29,14 +29,9 @@ Menu.prototype.init = function () {
 Menu.prototype.preload = function () {
 	
 	this.load.pack('img', 'assets/pack.json');
-	
-//	this.game.load.audio('gameStart', 'assets/sound/gameStart.wav');
-//	this.game.load.audio('gameEnd', 'assets/sound/gameEnd.wav');
-//	this.game.load.audio('goal', 'assets/sound/goal.wav');
-//	this.game.load.audio('kick', 'assets/sound/kick.wav');
 };
 Menu.prototype.create = function () {
-	
+	bgm1.play("", 0, 0.6);
 	this.add.sprite(1.0, -1.0, 'logo');
 	
 	var _startButton = this.add.button(400.0, 433.0, 'startButton', null, this, null, null, null, null);
@@ -47,7 +42,6 @@ Menu.prototype.create = function () {
 	
 	_rules.onInputUp.add(showRules, this);
 	_startButton.onInputUp.add(startGame, this);
-//	this.game.sound.setDecodedCallback([whistle], start, this);
 	
 };
 
@@ -55,8 +49,6 @@ Menu.prototype.create = function () {
 
 // -- user code here --
 function startGame(){
-//	console.log("start");
-	startWhistle.play();
 	this.game.state.start("Level");
 }
 function showRules(){

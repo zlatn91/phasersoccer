@@ -22,31 +22,43 @@ Result.prototype.constructor = Result;
 
 Result.prototype.init = function () {
 	
+	this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+	this.scale.pageAlignHorizontally = true;
+	this.scale.pageAlignVertically = true;
+	
 };
 
 Result.prototype.preload = function () {
 	
 	this.load.pack('img', 'assets/pack.json');
-
+	
 };
 
 Result.prototype.create = function () {
-	var _trophies = this.add.sprite(204.0, 11.0, 'trophies');
+	var _trophies = this.add.sprite(386.0, 118.0, 'trophies');
 	_trophies.scale.setTo(0.5, 0.5);
-
-	var _retry = this.add.button(269.0, 274.0, 'retry', null, this, null, null, null, null);
+	
+	var _retry = this.add.button(581.0, 414.0, 'retry', null, this, null, null, null, null);
 	_retry.scale.setTo(0.4, 0.4);
-
-	var _neonLogo = this.add.sprite(224.0, 273.0, 'neonLogo');
+	
+	var _neonLogo = this.add.sprite(532.0, 414.0, 'neonLogo');
 	_neonLogo.scale.setTo(0.1, 0.1);
-
-
-
+	
+	var _menuButton = this.add.button(300.0, 419.0, 'menuButton', null, this, null, null, null, null);
+	_menuButton.scale.setTo(0.3, 0.3);
+	
+	
+	_menuButton.onInputUp.add(showMenu, this);
+	_retry.onInputUp.add(restart, this);
+	
 };
 
 /* --- end generated code --- */
 
 // -- user code here --
+function showMenu(){
+	this.game.state.start("Menu");
+}
 function restart(){
 	this.game.state.start("Level");
 }

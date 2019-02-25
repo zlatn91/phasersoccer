@@ -203,6 +203,7 @@ Level.prototype.update = function() {
 			var color = Phaser.Color.RGBtoString(color1[0] += length, color1[1] += -length, color1[2], '', '');
 			arrow.tint = color;
 		// 벌어진 거리가 크면 화면 흔들리는 효과를 넣어줌 
+			//test
 		} else if (length > 300) {
 			this.game.camera.shake(0.003, 100);
 		}

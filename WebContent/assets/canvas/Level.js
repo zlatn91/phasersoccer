@@ -128,7 +128,7 @@ Level.prototype.create = function () {
 	this.fGoalPost1 = _goalPost1;
 	this.fBall = _ball;
 	this.fBall.body.onWorldBounds = new Phaser.Signal();
-//	this.fBall.body.onWorldBounds.add(setBounce, this);
+	this.fBall.body.onWorldBounds.add(setBounce, this);
 	this.fBall.body.onCollide = new Phaser.Signal();
 
 	graphics2 = this.game.add.graphics(0, 0);

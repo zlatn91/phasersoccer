@@ -82,7 +82,6 @@ Level.prototype.create = function () {
 	
 	var _ball = this.add.sprite(480.0, 274.0, 'ball');
 	this.game.physics.arcade.enable(_ball);
-//	_ball.body.setCircle();
 	_ball.anchor.setTo(0.5, 0.5);
 	_ball.body.collideWorldBounds = true;
 	_ball.body.bounce.x = 1;

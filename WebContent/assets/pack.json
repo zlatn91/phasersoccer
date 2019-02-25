@@ -115,10 +115,22 @@
       "key": "rules",
       "url": "assets/img/rules.png",
       "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "menuButton",
+      "url": "assets/img/menuButton.png",
+      "overwrite": false
+    },
+    {
+      "type": "image",
+      "key": "rulesMenu",
+      "url": "assets/img/rulesMenu.png",
+      "overwrite": false
     }
   ],
   "meta": {
-    "generated": "1550976016905",
+    "generated": "1551060278811",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

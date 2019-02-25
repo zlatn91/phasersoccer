@@ -29,14 +29,31 @@ Rules.prototype.init = function () {
 
 Rules.prototype.preload = function () {
 	
+	this.load.pack('img', 'assets/pack.json');
+	
 };
 
 Rules.prototype.create = function () {
-	this.game.input.onDown.add(startGame, this);
+	this.add.sprite(-1.0, 1.0, 'rulesMenu');
+	
+	var _startButton = this.add.button(764.0, 465.0, 'startButton', null, this, null, null, null, null);
+	_startButton.scale.setTo(0.3, 0.3);
+	
+	var _menuButton = this.add.button(634.0, 479.0, 'menuButton', null, this, null, null, null, null);
+	_menuButton.scale.setTo(0.2, 0.2);
+	
+	
+	_menuButton.onInputUp.add(showMenu, this);
+	_startButton.onInputUp.add(startGame, this);
+		
+	
 };
 
 /* --- end generated code --- */
 // -- user code here --
 function startGame(){
 	this.game.state.start("Level");
+}
+function showMenu(){
+	this.game.state.start("Menu");
 }

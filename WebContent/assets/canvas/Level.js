@@ -29,6 +29,7 @@ Level.prototype.preload = function () {
 	
 };
 Level.prototype.create = function () {
+	startWhistle.play();
 	var _field = this.add.sprite(480.0, 270.0, 'field');
 	_field.anchor.setTo(0.5, 0.5);
 	
@@ -127,9 +128,9 @@ Level.prototype.create = function () {
 	this.fGoalPost = _goalPost;
 	this.fGoalPost1 = _goalPost1;
 	this.fBall = _ball;
-	this.fBall.body.onWorldBounds = new Phaser.Signal();
-	this.fBall.body.onWorldBounds.add(setBounce, this);
-	this.fBall.body.onCollide = new Phaser.Signal();
+//	this.fBall.body.onWorldBounds = new Phaser.Signal();
+//	this.fBall.body.onWorldBounds.add(setBounce, this);
+//	this.fBall.body.onCollide = new Phaser.Signal();
 
 	graphics2 = this.game.add.graphics(0, 0);
 	graphics2.lineStyle(4, 0xffd900, 1);
@@ -203,7 +204,6 @@ Level.prototype.update = function() {
 			var color = Phaser.Color.RGBtoString(color1[0] += length, color1[1] += -length, color1[2], '', '');
 			arrow.tint = color;
 		// 벌어진 거리가 크면 화면 흔들리는 효과를 넣어줌 
-			//test
 		} else if (length > 300) {
 			this.game.camera.shake(0.003, 100);
 		}
@@ -228,8 +228,8 @@ Level.prototype.update = function() {
 	// Home, Away 그룹은 서로 충돌 
 	this.game.physics.arcade.collide(this.fHomeTeam, this.fAwayTeam);
 	
-// 공의 스피드가 떨어지면 공의 가속도를 점차 감소시킴 
-	
+//// 공의 스피드가 떨어지면 공의 가속도를 점차 감소시킴 
+//	
 //	if (speed !== 0) {
 //		if (speed <= 200 && speed > 100) {
 //			test("test0");
@@ -252,12 +252,12 @@ Level.prototype.update = function() {
 	for(var i=0; i<5; i++){
 		if(this.fHomeTeam.children[i].body.center.x >= 0 && this.fHomeTeam.children[i].body.center.x <= 60){
 			if(this.fHomeTeam.children[i].body.center.y >= 220 && this.fHomeTeam.children[i].body.center.y <= 320){
-				this.fHomeTeam.children[i].body.velocity.set(200, -200);
+				this.fHomeTeam.children[i].body.velocity.set(ran(200, 400), ran(-200, -300));
 			}
 		}
 		if(this.fAwayTeam.children[i].body.center.x >= 900 && this.fAwayTeam.children[i].body.center.x <= 960){
 			if(this.fAwayTeam.children[i].body.center.y >= 220 && this.fAwayTeam.children[i].body.center.y <= 320){
-				this.fAwayTeam.children[i].body.velocity.set(-200, 200);
+				this.fAwayTeam.children[i].body.velocity.set(ran(-200, -400), ran(200, 300));
 			}
 		}
 	}
@@ -293,16 +293,17 @@ function showResult(){
 
 // 득점시 화면 흔들림후 공을 없애고 점수처리를 하는 메서드 
 function score() {
-	var goal;
+	goal.play();
+	var scoreTeam;
 	this.game.camera.shake(0.005, 2000);
 	this.fBall.kill();
 	if (team == "home") {
-		goal = this.add.sprite(0.0, 100.0, 'goal');
-		goal.scale.set(0.5, 0.5);
+		scoreTeam = this.add.sprite(0.0, 100.0, 'goal');
+		scoreTeam.scale.set(0.5, 0.5);
 		homeTeamScore += 1;
 	} else {
-		goal = this.add.sprite(.0, 100.0, 'goal');
-		goal.scale.set(0.5, 0.5);
+		scoreTeam = this.add.sprite(.0, 100.0, 'goal');
+		scoreTeam.scale.set(0.5, 0.5);
 		awayTeamScore += 1;
 	}
 	timer.add(5000, restart, this);
@@ -313,14 +314,18 @@ Level.prototype.render = function() {
 	this.game.debug.text("Timer " + parseInt(timer.duration / 1000), 450, 32, 'white');
 	this.game.debug.text("HomeTeam Score: " + homeTeamScore, 100, 50, 'green');
 	this.game.debug.text("AwayTeam Score: " + awayTeamScore, 700, 50, 'red');
+	this.game.debug.bodyInfo(this.fBall, 32, 32);
 };
 
 // 플레이어와 공이 충돌하면 충돌 접점의 x,y를 이용해 감아차는 정도를 판단
 function banana(fBall, kicker) {
+	kick.play();
 //	this.fBall = fBall;
 //	this.kicker = kicker;
 	fBall.body.acceleration.x = 0;
 	fBall.body.acceleration.y = 0;
+	fBall.body.maxVelocity.x = 900.0;
+	fBall.body.maxVelocity.y = 900.0;
 	if (kicker.body.speed > 450) {
 		if (kY > bY) {
 			kicker.body.angularVelocity += 1000;
@@ -386,14 +391,14 @@ function banana(fBall, kicker) {
 		}
 	}
 }
-var bounce = 1;
-function setBounce(fBall) {
-	if (bounce <= 1) {
-		test("여기");
-		bounce -= 0.4;
-		fBall.body.bounce.set(bounce, bounce);
-	}
-}
+//var bounce = 1;
+//function setBounce(fBall) {
+//	if (bounce <= 1) {
+//		test("여기");
+//		bounce -= 0.4;
+//		fBall.body.bounce.set(bounce, bounce);
+//	}
+//}
 function setX(player) {
 	centerX = player.body.center.x;
 	return centerX;

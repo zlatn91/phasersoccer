@@ -129,8 +129,34 @@
       "overwrite": false
     }
   ],
+  "sound": [
+    {
+      "type": "audio",
+      "key": "goal1",
+      "urls": ["assets/sound/goal.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "gameEnd",
+      "urls": ["assets/sound/gameEnd.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "gameStart",
+      "urls": ["assets/sound/gameStart.mp3"],
+      "autoDecode": true
+    },
+    {
+      "type": "audio",
+      "key": "kick",
+      "urls": ["assets/sound/kick.mp3"],
+      "autoDecode": true
+    }
+  ],
   "meta": {
-    "generated": "1551060278811",
+    "generated": "1551065719923",
     "app": "Phaser Editor",
     "url": "http://phasereditor.boniatillo.com",
     "version": "1.0",

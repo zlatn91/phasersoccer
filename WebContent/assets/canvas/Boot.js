@@ -28,12 +28,16 @@ Boot.prototype.init = function () {
 };
 
 Boot.prototype.preload = function () {
-
+	this.load.pack('img', 'assets/pack.json');
+	this.load.pack('sound', 'assets/pack.json');
 };
 
 Boot.prototype.create = function () {
+	startWhistle = this.game.add.audio('gameStart');
+	endWhistle = this.game.add.audio('gameEnd');
+	goal = this.game.add.audio('goal');
+	kick = this.game.add.audio('kick');
 	this.game.state.start("Menu");
 };
-
 /* --- end generated code --- */
 // -- user code here --

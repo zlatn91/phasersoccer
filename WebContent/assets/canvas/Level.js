@@ -320,7 +320,7 @@ Level.prototype.render = function() {
 	this.game.debug.text("Timer " + parseInt(timer.duration / 1000), 450, 32, 'white');
 	this.game.debug.text("HomeTeam Score: " + homeTeamScore, 100, 50, 'green');
 	this.game.debug.text("AwayTeam Score: " + awayTeamScore, 700, 50, 'red');
-	this.game.debug.bodyInfo(this.fBall, 32, 32);
+//	this.game.debug.bodyInfo(this.fBall, 32, 32);
 };
 
 // 플레이어와 공이 충돌하면 충돌 접점의 x,y를 이용해 감아차는 정도를 판단
